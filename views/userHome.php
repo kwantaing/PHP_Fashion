@@ -35,7 +35,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-1.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-1.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -59,7 +59,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-2.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-2.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -83,7 +83,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-3.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-3.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -107,7 +107,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-4.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-4.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -131,7 +131,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-5.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-5.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -155,7 +155,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-6.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-6.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -179,7 +179,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-7.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-7.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -203,7 +203,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-8.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-8.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -227,7 +227,7 @@
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
 												<a href="blog-post.html">
-													<img src="img/blog/medium/blog-9.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-9.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 

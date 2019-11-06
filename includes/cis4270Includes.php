@@ -16,15 +16,17 @@ include_once(APP_NON_WEB_BASE_DIR .'controllers/UserController.php');
 include_once(APP_NON_WEB_BASE_DIR .'controllers/HomeController.php');
 include_once(APP_NON_WEB_BASE_DIR .'controllers/CartController.php');
 include_once(APP_NON_WEB_BASE_DIR .'controllers/AdminController.php');
-include_once(APP_NON_WEB_BASE_DIR .'models/Category.php');
-include_once(APP_NON_WEB_BASE_DIR .'models/Product.php');
+// include_once(APP_NON_WEB_BASE_DIR .'models/Category.php');
+// include_once(APP_NON_WEB_BASE_DIR .'models/Product.php');
+include_once(APP_NON_WEB_BASE_DIR .'UserDAM.php');
 //include_once(APP_NON_WEB_BASE_DIR .'db/CategoryDAM.php');
 // include_once(APP_NON_WEB_BASE_DIR .'db/CategoryDAMAchtung.php');
 //include_once(APP_NON_WEB_BASE_DIR .'db/ProductDAM.php');
 // include_once(APP_NON_WEB_BASE_DIR .'db/ProductDAMAchtung.php');
+include_once(APP_NON_WEB_BASE_DIR .'viewModels/UsersVM.php');
 include_once(APP_NON_WEB_BASE_DIR .'viewModels/Page.php');
 include_once(APP_NON_WEB_BASE_DIR .'viewModels/MessageVM.php');
-//include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVM.php');
-include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVMAchtung.php');
+include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVM.php');
+// include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVMAchtung.php');
 
 

@@ -6,19 +6,18 @@
 <div class="body">
 	<div role="main" class="main">
 
-		<section class="page-header page-header-modern page-header-background page-header-background-sm overlay overlay-color-primary overlay-show overlay-op-8 mb-5" style="background-image: url(img/page-header/page-header-elements.jpg);">
+		<section class="page-header page-header-classic page-header-sm">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 align-self-center p-static order-2 text-center">
-						<h1>Forms</h1>
-
-					</div>
-					<div class="col-md-12 align-self-center order-1">
-						<ul class="breadcrumb breadcrumb-light d-block text-center">
-							<li><a href="#">Home</a></li>
-							<li class="active">Elements</li>
-						</ul>
-					</div>
+					<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                        <h1 data-title-border>Create a new Post</h1>
+                    </div>
+                    <div class="col-md-4 order-1 order-md-2 align-self-center">
+                        <ul class="breadcrumb d-block text-md-right">
+                            <li><a href="index.php">Home</a></li>
+                            <li class="active">New Post</li>
+                        </ul>
+                    </div>
 				</div>
 			</div>
 		</section>
@@ -48,7 +47,7 @@
 					<div class="offset-anchor" id="contact-sent"></div>
 
 					<div class="overflow-hidden mb-1">
-						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Contact</strong> Us</h2>
+						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Make a New Fashion Post</strong></h2>
 					</div>
 					<div class="overflow-hidden mb-4 pb-3">
 						<p class="mb-0">Feel free to ask for details, don't save any questions!</p>
@@ -58,27 +57,23 @@
 						<input type="hidden" value="true" name="emailSent" id="emailSent">
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label class="required font-weight-bold text-dark">Full Name</label>
+								<label class="required font-weight-bold text-dark">Name</label>
 								<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
-							</div>
-							<div class="form-group col-md-6">
-								<label class="required font-weight-bold text-dark">Email Address</label>
-								<input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label class="font-weight-bold text-dark">Subject</label>
+								<label class="font-weight-bold text-dark">Article of Clothing</label>
 								<select data-msg-required="Please enter the subject." class="form-control" name="subject" id="subject" required>
 									<option value="">...</option>
-									<option value="Option 1">Option 1</option>
-									<option value="Option 2">Option 2</option>
-									<option value="Option 3">Option 3</option>
-									<option value="Option 4">Option 4</option>
+									<option value="top">Top</option>
+									<option value="bottom">Bottom</option>
+									<option value="shoes">Shoes</option>
+									<option value="accessories">Accessories</option>
 								</select>
 							</div>
 						</div>
-						<div class="form-row">
+						<!-- <div class="form-row">
 							<div class="form-group col-md-6">
 								<p class="mb-2">Checkboxes</p>
 								<div class="form-check form-check-inline">
@@ -115,16 +110,16 @@
 									</label>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label class="font-weight-bold text-dark">Attachment</label>
+								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
 								<input class="d-block" type="file" name="attachment" id="attachment">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-4">
-								<label class="required font-weight-bold text-dark">Message</label>
+								<label class="required font-weight-bold text-dark">Post Message</label>
 								<textarea maxlength="5000" data-msg-required="Please enter your message." rows="6" class="form-control" name="message" id="message" required></textarea>
 							</div>
 						</div>

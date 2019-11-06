@@ -2,14 +2,14 @@
 <div class="body">
 			<div role="main" class="main">
 
-				<section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
+				<section class="page-header page-header-modern bg-color-dark-scale-1 page-header-md">
 					<div class="container">
 						<div class="row">
 
 							<div class="col-md-12 align-self-center p-static order-2 text-center">
 
-								<h1 class="text-dark font-weight-bold text-8">Grid 3 Columns</h1>
-<span class="sub-title text-dark">Check out our Latest News!</span>
+								<h1 class="text-light font-weight-bold text-8">Grid 3 Columns</h1>
+								<span class="sub-title text-light">Check out our Latest News!</span>
 							</div>
 
 							<div class="col-md-12 align-self-center order-1">

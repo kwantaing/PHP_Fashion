@@ -54,10 +54,10 @@
                     <div class="col-md-6 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="1000">
                         <div class="owl-carousel owl-theme nav-inside mb-0" data-plugin-options="{'items': 1, 'margin': 10, 'animateOut': 'fadeOut', 'autoplay': true, 'autoplayTimeout': 6000, 'loop': true}">
                             <div>
-                                <img alt="" class="img-fluid" src="img/generic/generic-corporate-3-2-full.jpg">
+                                <img alt="" class="img-fluid" src="content/img/generic/generic-corporate-3-2-full.jpg">
                             </div>
                             <div>
-                                <img alt="" class="img-fluid" src="img/generic/generic-corporate-3-3-full.jpg">
+                                <img alt="" class="img-fluid" src="content/img/generic/generic-corporate-3-3-full.jpg">
                             </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             <article class="timeline-box left text-left appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
                                 <div class="timeline-box-arrow"></div>
                                 <div class="p-2">
-                                    <img alt="" class="img-fluid" src="img/history/history-3.jpg" />
+                                    <img alt="" class="img-fluid" src="content/img/history/history-3.jpg" />
                                     <h3 class="font-weight-bold text-3 mt-3 mb-1">New Office</h3>
                                     <p class="mb-0 text-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante.</p>
                                 </div>
@@ -162,7 +162,7 @@
                             <article class="timeline-box right text-left appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="400">
                                 <div class="timeline-box-arrow"></div>
                                 <div class="p-2">
-                                    <img alt="" class="img-fluid" src="img/history/history-2.jpg" />
+                                    <img alt="" class="img-fluid" src="content/img/history/history-2.jpg" />
                                     <h3 class="font-weight-bold text-3 mt-3 mb-1">New Partners</h3>
                                     <p class="mb-0 text-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat.</p>
                                 </div>
@@ -175,7 +175,7 @@
                             <article class="timeline-box left text-left appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="600">
                                 <div class="timeline-box-arrow"></div>
                                 <div class="p-2">
-                                    <img alt="" class="img-fluid" src="img/history/history-1.jpg" />
+                                    <img alt="" class="img-fluid" src="content/img/history/history-1.jpg" />
                                     <h3 class="font-weight-bold text-3 mt-3 mb-1">Foundation</h3>
                                     <p class="mb-0 text-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel consequat, ante.</p>
                                 </div>
@@ -202,7 +202,7 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg bg-transparent border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
                                 <a href="about-me.html">
-                                    <img src="img/team/team-1.jpg" class="img-fluid border-radius-0" alt="">
+                                    <img src="content/img/team/team-1.jpg" class="img-fluid border-radius-0" alt="">
                                     <span class="thumb-info-title">
                                         <span class="thumb-info-inner">John Doe</span>
                                         <span class="thumb-info-type">CEO</span>
@@ -223,7 +223,7 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg bg-transparent border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
                                 <a href="about-me.html">
-                                    <img src="img/team/team-2.jpg" class="img-fluid border-radius-0" alt="">
+                                    <img src="content/img/team/team-2.jpg" class="img-fluid border-radius-0" alt="">
                                     <span class="thumb-info-title">
                                         <span class="thumb-info-inner">Jessica Doe</span>
                                         <span class="thumb-info-type">Marketing</span>
@@ -244,7 +244,7 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg bg-transparent border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
                                 <a href="about-me.html">
-                                    <img src="img/team/team-3.jpg" class="img-fluid border-radius-0" alt="">
+                                    <img src="content/img/team/team-3.jpg" class="img-fluid border-radius-0" alt="">
                                     <span class="thumb-info-title">
                                         <span class="thumb-info-inner">Rick Edward Doe</span>
                                         <span class="thumb-info-type">Developer</span>
@@ -265,7 +265,7 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg bg-transparent border-radius-0">
                             <span class="thumb-info-wrapper border-radius-0">
                                 <a href="about-me.html">
-                                    <img src="img/team/team-4.jpg" class="img-fluid border-radius-0" alt="">
+                                    <img src="content/img/team/team-4.jpg" class="img-fluid border-radius-0" alt="">
                                     <span class="thumb-info-title">
                                         <span class="thumb-info-inner">Melinda Wolosky</span>
                                         <span class="thumb-info-type">Design</span>
@@ -292,28 +292,28 @@
             
                     <div class="owl-carousel owl-theme mb-0" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-1.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-1.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-2.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-2.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-3.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-3.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-4.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-4.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-5.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-5.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-6.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-6.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-4.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-4.png" alt="">
                         </div>
                         <div>
-                            <img class="img-fluid opacity-2" src="img/logos/logo-2.png" alt="">
+                            <img class="img-fluid opacity-2" src="content/img/logos/logo-2.png" alt="">
                         </div>
                     </div>
                     

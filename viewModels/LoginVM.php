@@ -8,7 +8,7 @@
  */
 class LoginVM {
 
-    public $enteredUserId;
+    public $enteredUserEmail;
     public $enteredPassword;
     public $userType;
     public $errorMsg;
@@ -22,21 +22,21 @@ class LoginVM {
         $this->userDAM = new UserDAM();
         $this->errorMsg = '';
         $this->statusMsg = array();
-        $this->enteredUserId = '';
+        $this->enteredUserEmail = '';
         $this->enteredPassword = '';
     }
 
     public static function getInstance() {
         $vm = new self();
-        $vm->enteredUserId = hPOST('username');
+        $vm->enteredUserEmail = hPOST('email');
         $vm->enteredPassword = hPOST('password');
-        $user = $vm->userDAM->readUser($vm->enteredUserId);
+        $user = $vm->userDAM->readUser($vm->enteredUserEmail);
         if ($vm->authenticateUser($user)) {
             $vm->userType = self::VALID_LOGIN;
             session_start();
             after_successful_login();
             $_SESSION ['userName'] = $user->firstName . ' ' . $user->lastName;
-            $_SESSION ['userId'] = $vm->enteredUserId;
+            $_SESSION ['email'] = $vm->enteredUserEmail;
         } else {
              $vm->userType = self::INVALID_LOGIN;
         }
@@ -48,7 +48,8 @@ class LoginVM {
         if ($user === null) {
             $userFound = false;
         }
-        return $userFound &&
+        return 
+            // $userFound &&
             password_verify($this->enteredPassword, $user->password);
     }
 

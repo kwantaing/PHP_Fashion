@@ -19,56 +19,17 @@ class HomeController extends DefaultController {
     }
     public function featured(){
         //check session logged in
+        before_every_protected_page();
         //if session in
         require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
         //else redirect to login/reg
     }
     public function newPost(){
+        before_every_protected_page();
         //check session logged in
         //if session in
         require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
         //else redirect to login/reg
-    }
-    public function listProducts() {
-        $vm = ProductsVM::getCategoryInstance();
-        Page::$title = 'My Guitar Shop - ' . $vm->category->name;
-        require(APP_NON_WEB_BASE_DIR .'views/categoryProductList.php');
-    }
-    
-    public function viewProduct() {
-        $vm = ProductsVM::getProductInstance();
-        Page::$title = 'My Guitar Shop - ' . $vm->product->name;
-        require(APP_NON_WEB_BASE_DIR .'views/productView.php');
-    }
-    
-    public function getAppraisalStatus() {
-        before_every_protected_page();
-        $vm = AppraisalResultsVM::getStatusInstance();
-        $this->goToView($vm);
-    }
-    
-    public function verifyDelete() {
-        before_every_protected_page();
-        Page::$title = 'Verify Delete';
-        Page::$userName = $_SESSION ['userName'];
-        Page::setNavLinks(array('admin profile', 'logout'));
-        require(NON_WEB_BASE_DIR .'views/verifyDelete.php');
-    }
-    
-    public function deleteAssignments() {
-        before_every_protected_page();
-        $vm = AppraisalResultsVM::getDeleteInstance() ;
-        $this->goToView($vm);
-    }
-    
-    public function downloadAppraisalResults() {
-        before_every_protected_page();
-        AppraisalResultsVM::download();
-    }
-    
-    public function downloadAppraisalReports() {
-        before_every_protected_page();
-        AppraisalResultsVM::downloadReports();
     }
     
     public function getProfile() {
@@ -87,33 +48,6 @@ class HomeController extends DefaultController {
         }
     }
     
-    public function downloadUpdatedUserProfiles() {
-        before_every_protected_page();
-        UserProfileUpdatesVM::download();
-    }
-    
-    public function clearProfilesUpdate() {
-        $vm = UserProfileUpdatesVM::getDeleteInstance();
-        $this->showMenu($vm->statusMsg);
-    }
-    
-    public function manageAdmin() {
-        before_every_protected_page();
-        $vm = AdminProfileVM::getManageInstance();
-        $this->protectAdminMgmt($vm);
-    }
-    
-    public function addAdmin() {
-        before_every_protected_page();
-        $vm = AdminProfileVM::getAddInstance();
-        $this->protectAdminMgmt($vm);
-    }
-    
-    public function deleteAdmin() {
-        before_every_protected_page();
-        $vm = AdminProfileVM::getDeleteInstance();
-        $this->protectAdminMgmt($vm);
-    }
     
     private function goToView($vm) {
         

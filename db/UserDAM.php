@@ -19,18 +19,18 @@ class UserDAM extends DAM {
      * @return \User the resulting User object - null if user is
      * not in the database.
      */
-    public function readUser($userId) {
+    public function readUser($email) {
         $query = 'SELECT * FROM users
-              WHERE userID = :userID';
+              WHERE email = :email';
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':userID', $userId);
+        $statement->bindValue(':email', $email);
         $statement->execute();
-        $productDB = $statement->fetch();
+        $userDB = $statement->fetch();
         $statement->closeCursor();
-        if ($productDB == null) {
+        if ($userDB == null) {
             return null;
         } else {
-            return new User($this->mapColsToVars($productDB));
+            return new User($this->mapColsToVars($userDB));
         }
     }
 
@@ -74,6 +74,28 @@ class UserDAM extends DAM {
         }
     }
 
+    public function newUserCreate($user){
+        $query = 'SELECT email FROM Users WHERE email = :email';
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':email',$user->email);
+        $statement->execute();
+        $userDB = $statement->fetch();
+        $statement->closeCursor();
+        if($userDB == null){
+            //no user by the email, OK to create
+            $query = 
+                    'INSERT INTO Users (firstName, lastName, email, password)
+                    VALUES(:firstName, :lastName, :email, :password)';
+            $statement = $this->db->prepare($query);
+            $this->bindValues($user,$statement);
+            $statement->execute();
+            $statement->closeCursor();
+        }else{
+            //user already exists
+            return "user already exists with that email";
+        }
+    }
+
     /**
      * Delete the specified User object from the database.
      * 
@@ -101,14 +123,16 @@ class UserDAM extends DAM {
     private function mapColsToVars($colArray) {
         $varArray = array();
         foreach ($colArray as $key => $value) {
-            if ($key == 'userID') {
-                $varArray ['id'] = $value;
+            if ($key == 'user_id') {
+                $varArray ['user_id'] = $value;
             } else if ($key == 'lastName') {
                 $varArray ['lastName'] = $value;
             } else if ($key == 'firstName') {
                 $varArray ['firstName'] = $value;
             } else if ($key == 'password') {
                 $varArray ['password'] = $value;
+            } else if ($key == 'email') {
+                $varArray ['email'] = $value;
             }
         }
         return $varArray;
@@ -116,9 +140,10 @@ class UserDAM extends DAM {
 
     // Binds object instance variables to a prepared statement.
     private function bindValues($user, $statement) {
-        $statement->bindValue(':userID', $user->id);
+        // $statement->bindValue(':user_id', $user->user_id);
         $statement->bindValue(':lastName', $user->lastName);
         $statement->bindValue(':firstName', $user->firstName);
         $statement->bindValue(':password', $user->password);
+        $statement->bindValue(':email', $user->email);
     }
 }

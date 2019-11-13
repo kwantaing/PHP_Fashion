@@ -1,6 +1,6 @@
 <?php 
-	require('views/header.php');
-	session_start();
+		require('views/header.php');
+
 ?>
 
 <div class="body">

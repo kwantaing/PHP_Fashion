@@ -36,9 +36,12 @@
 												<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a Returning Customer</h4>
 												<form action="index.php" id="frmSignIn" method="post" class="needs-validation">
 													<div class="error" style="color:red">
-														<?php foreach($logErr as $msg){
-															echo $msg;
-														} ?>
+														<?php 
+															if(isset($logErr)){
+																foreach($logErr as $msg){
+																	echo $msg;
+																} 
+															}?>
 													</div>
 													<div class="form-row">
 														<input type="hidden" name="ctlr" value="user">
@@ -76,9 +79,12 @@
 												<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Register An Account</h4>
 												<form action="index.php" id="frmSignUp" method="post" class="">
 													<div class="error" style="color:red">
-														<?php foreach($regErr as $msg){
-															echo $msg;
-														} ?>
+														<?php 
+															if($regErr){
+															foreach($regErr as $msg){
+																echo $msg;
+															} 
+														}?>
 													</div>
 													<input type="hidden" name="ctlr" value="user">
 													<input type="hidden" name="action" value="register">
@@ -86,6 +92,16 @@
 														<div class="form-group col">
 															<label class="font-weight-bold text-dark text-2">E-mail Address</label>
 															<input name="email" type="email" value="" class="form-control form-control-lg" required>
+														</div>
+													</div>
+													<div class="form-row">
+														<div class="form-group col">
+															<label class="font-weight-bold text-dark text-2">First Name</label>
+															<input name="firstName" type="text" value="" class="form-control form-control-lg" required>
+														</div>
+														<div class="form-group col">
+															<label class="font-weight-bold text-dark text-2">Last Name</label>
+															<input name="lastName" type="text" value="" class="form-control form-control-lg" required>
 														</div>
 													</div>
 													<div class="form-row">

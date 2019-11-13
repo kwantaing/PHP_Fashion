@@ -6,6 +6,10 @@ class RegisterVM {
     // public $enteredLastName;
     // public $enteredPassword;
     public $regErr;
+    public $userType;
+
+    const VALID_REG = 'valid_reg';
+    const INVALID_REG = 'invalid_reg';
 
     public function __construct() {
         $this->userDAM = new UserDAM();
@@ -50,11 +54,13 @@ class RegisterVM {
             }
         }
         if($valid === false) {
+            $vm->userType = self::INVALID_REG;
             return false;
         }else{
+            $vm->userType = self::VALID_REG;
             session_start();
             after_successful_login();
-            $_SESSION ['userName'] = $user->firstName . ' ' . $user->lastName;
+            $_SESSION ['userName'] = $vm->user->firstName . ' ' . $vm->user->lastName;
             $_SESSION ['email'] = $vm->enteredUserEmail;
             return $vm;
         }

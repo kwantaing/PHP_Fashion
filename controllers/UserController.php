@@ -19,6 +19,7 @@ class UserController extends DefaultController {
         parent::__construct();
     }
     public function logRegGET() {
+        session_start();
         // Page::$title = 'Fashion Advices - Login & Registration';
         require(APP_NON_WEB_BASE_DIR .'views/loginReg.php');
     }
@@ -51,8 +52,9 @@ class UserController extends DefaultController {
 
     // }
     public function loginPOST() {
+        session_start();
         $delay = false;
-
+        after_successful_logout();
         if(!isset($_POST['email']) && !isset($_POST['password'])){
             $logErr[] = "Please enter in all input fields.";
             $delay = true;
@@ -75,6 +77,7 @@ class UserController extends DefaultController {
     }
     
     public function logout() {
+        session_start();
         session_destroy();
         after_successful_logout();
         require(APP_NON_WEB_BASE_DIR . 'views/home.php');
@@ -108,8 +111,10 @@ class UserController extends DefaultController {
     // }
 
     public function registerPOST() {
+        session_start();
         after_successful_logout();
         $valid = true;
+        $regErr = [];
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['firstName']) || !isset($_POST['lastName'])){
             $regErr[] = "Please fill in all fields";
             $valid = false;
@@ -118,17 +123,31 @@ class UserController extends DefaultController {
             $regErr[] = "Passwords do not match";
             $valid = false;
         }
-        $vm = RegisterVM::regNewUserInstance();
-        Page::$title = 'Fashion Advices - Login & Registration';
+        if(strpos($_POST['email'],';')!==false || strpos($_POST['email'],'\'')!==false
+        || strpos($_POST['firstName'],';')!==false || strpos($_POST['firstName'],'\'')!==false
+        ||strpos($_POST['lastName'],';')!==false || strpos($_POST['lastName'],'\'')!==false)
+        {
+            //potential SQL injection check
+            $regErr[] = "Potential SQL injection attack";
+            $valid = false;
+        }
+        if($valid == true){
+            $vm = RegisterVM::regNewUserInstance();
+            Page::$title = 'Fashion Advices - Login & Registration';
+            if($vm->userType == RegisterVM::VALID_REG){
+                require(APP_NON_WEB_BASE_DIR .'views/userHome.php');
+            }else {
+                $delay = true;
+                require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
+            }
 
-        if($vm || $valid) {
-            session_start();
-            after_successful_login();
-            require(APP_NON_WEB_BASE_DIR .'views/userHome.php');
-        }else {
+        }else{
             $delay = true;
             require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
+
         }
+
+
     }
 
         

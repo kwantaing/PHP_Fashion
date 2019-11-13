@@ -1,4 +1,4 @@
-<?php require('views/header.php'); ?>
+<?php require('views/header.php'); session_start();?>
 <div class="body">
     <div role="main" class="main">
         <section class="page-header page-header-classic page-header-sm">

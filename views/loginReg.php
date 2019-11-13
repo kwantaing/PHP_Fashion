@@ -1,4 +1,6 @@
 <?php require('views/header.php'); ?>
+<?php echo($_SESSION['token']); session_start();?>
+
 <main>
 		<div class="body">
 			<div role="main" class="main">
@@ -85,7 +87,8 @@
 																echo $msg;
 															} 
 														}?>
-													</div>
+													</div>													
+													<input type="hidden" name="token" value="<?php echo $token ?>">
 													<input type="hidden" name="ctlr" value="user">
 													<input type="hidden" name="action" value="register">
 													<div class="form-row">
@@ -122,7 +125,7 @@
 															</div>
 														</div>
 														<div class="form-group col-lg-3">
-															<input type="submit" value="Register" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
+															<input type="submit" name="submitbtn" value="Register" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 														</div>
 													</div>
 												</form>

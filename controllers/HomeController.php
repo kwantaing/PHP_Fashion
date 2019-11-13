@@ -18,18 +18,18 @@ class HomeController extends DefaultController {
         require(APP_NON_WEB_BASE_DIR . 'views/aboutUs.php');
     }
     public function featured(){
+        session_start();
         //check session logged in
         before_every_protected_page();
         //if session in
         require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
-        //else redirect to login/reg
     }
     public function newPost(){
+        session_start();
         before_every_protected_page();
         //check session logged in
         //if session in
         require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
-        //else redirect to login/reg
     }
     
     public function getProfile() {

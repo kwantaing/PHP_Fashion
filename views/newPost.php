@@ -54,18 +54,20 @@
 						<p class="mb-0">Feel free to ask for details, don't save any questions!</p>
 					</div>
 
-					<form id="contactFormAdvanced" action="<?php echo basename($_SERVER['PHP_SELF']); ?>#contact-sent" method="POST" enctype="multipart/form-data">
-						<input type="hidden" value="true" name="emailSent" id="emailSent">
+					<form id="contactFormAdvanced" action="." method="POST" enctype="multipart/form-data">
+						<!-- <input type="hidden" value="true" name="emailSent" id="emailSent"> -->
+						<input type="hidden" name="ctlr" value="post">
+						<input type="hidden" name="action" value="newPost">
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label class="required font-weight-bold text-dark">Name</label>
-								<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
+								<input name = "userName" type="text" disabled value="<?php echo $_SESSION['userName'] ?>" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Article of Clothing</label>
-								<select data-msg-required="Please enter the subject." class="form-control" name="subject" id="subject" required>
+								<select name="clothing_type"  data-msg-required="Please enter the subject." class="form-control" name="subject" id="subject" required>
 									<option value="">...</option>
 									<option value="top">Top</option>
 									<option value="bottom">Bottom</option>
@@ -74,54 +76,22 @@
 								</select>
 							</div>
 						</div>
-						<!-- <div class="form-row">
-							<div class="form-group col-md-6">
-								<p class="mb-2">Checkboxes</p>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" name="checkboxes[]" type="checkbox" data-msg-required="Please select at least one option." id="inlineCheckbox1" value="option1"> 1
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" name="checkboxes[]" type="checkbox" data-msg-required="Please select at least one option." id="inlineCheckbox1" value="option2"> 2
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" name="checkboxes[]" type="checkbox" data-msg-required="Please select at least one option." id="inlineCheckbox1" value="option3"> 3
-									</label>
-								</div>
-							</div>
-							<div class="form-group col-md-6">
-								<p class="mb-2">Radios</p>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="radios" data-msg-required="Please select at least one option." id="inlineRadio1" value="option1"> 1
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="radios" data-msg-required="Please select at least one option." id="inlineRadio2" value="option2"> 2
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="radio" name="radios" data-msg-required="Please select at least one option." id="inlineRadio3" value="option3"> 3
-									</label>
-								</div>
-							</div>
-						</div> -->
 						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label class="font-weight-bold text-dark">Image <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
+								<input class="text" type="text" name="post_img">
+							</div>
+						</div>
+						<!-- <div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
 								<input class="d-block" type="file" name="attachment" id="attachment">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-4">
 								<label class="required font-weight-bold text-dark">Post Message</label>
-								<textarea maxlength="5000" data-msg-required="Please enter your message." rows="6" class="form-control" name="message" id="message" required></textarea>
+								<textarea maxlength="5000" name="post_msg" data-msg-required="Please enter your message." rows="6" class="form-control" name="message" id="message" required></textarea>
 							</div>
 						</div>
 						<div class="form-row">
@@ -131,7 +101,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-5">
-								<input type="submit" id="contactFormSubmit" value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
+								<input type="submit"  value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
 							</div>
 						</div>
 					</form>

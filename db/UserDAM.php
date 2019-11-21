@@ -34,46 +34,6 @@ class UserDAM extends DAM {
         }
     }
 
-    /**
-     * Write the specified user to the database. If the user is not
-     * in the database, the object is added. If the user is already in the
-     * database, the object is updated (excluding password).
-     * @param type $user the User object to be written.
-     */
-    public function writeUser($user) {
-
-        // Check to see if the user is already in the database.
-        $query = 'SELECT userID FROM users
-              WHERE userID = :userID';
-        $statement = $this->db->prepare($query);
-        $statement->bindValue(':userID', $user->id);
-        $statement->execute();
-        $userDB = $statement->fetch();
-        $statement->closeCursor();
-        if ($userDB == null) {
-
-            // Add a new user to the database
-            $query = 'INSERT INTO users
-                (userID, lastName, firstName, password)
-              VALUES
-                (:userID, :lastName, :firstName, :password)';
-            $statement = $this->db->prepare($query);
-            $this->bindValues($user, $statement);
-            $statement->execute();
-            $statement->closeCursor();
-        } else {
-
-            // Update an existing administrator.
-            $query = 'UPDATE users
-              SET lastName = :lastName, firstName = :firstName, password = :password
-              WHERE userID = :userID';
-            $statement = $this->db->prepare($query);
-            $this->bindValues($user, $statement);
-            $statement->execute();
-            $statement->closeCursor();
-        }
-    }
-
     public function newUserCreate($user){
         $query = 'SELECT email FROM Users WHERE email = :email';
         $statement = $this->db->prepare($query);

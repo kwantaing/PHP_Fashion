@@ -1,12 +1,14 @@
 <?php require('views/header.php'); ?>
-<?php echo($_SESSION['token']); session_start();?>
+<?php session_start();?>
 
 <main>
 		<div class="body">
 			<div role="main" class="main">
 			<?php 
-				if($delay === true){
-					sleep(1);
+				if(isset($delay)){
+					if($delay === true){
+						sleep(1);
+					}
 				}
 			?>
 				<section class="page-header page-header-classic page-header-sm">
@@ -82,13 +84,12 @@
 												<form action="index.php" id="frmSignUp" method="post" class="">
 													<div class="error" style="color:red">
 														<?php 
-															if($regErr){
+															if(isset($regErr)){
 															foreach($regErr as $msg){
 																echo $msg;
 															} 
 														}?>
 													</div>													
-													<input type="hidden" name="token" value="<?php echo $token ?>">
 													<input type="hidden" name="ctlr" value="user">
 													<input type="hidden" name="action" value="register">
 													<div class="form-row">

@@ -20,7 +20,7 @@ class UserController extends DefaultController {
     }
     public function logRegGET() {
         session_start();
-        // Page::$title = 'Fashion Advices - Login & Registration';
+        Page::$title = 'Fashion Advices - Login & Registration';
         require(APP_NON_WEB_BASE_DIR .'views/loginReg.php');
     }
     // public function loginPOST() {

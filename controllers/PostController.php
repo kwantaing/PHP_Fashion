@@ -18,10 +18,24 @@ class PostController extends DefaultController {
 
     public function newPostPOST() {
         session_start();
-        $vm = PostVM::newPostInstance();
-        if($vm->postType == PostVM::VALID_POST) {
-            Page::$title = 'Post Details';
-            require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
+        $valid = true;
+        if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false        ||strpos($_POST['article_type'],';')!==false || strpos($_POST['article_type'],'\'')!==false
+        ||strpos($_POST['post_msg'],';')!==false || strpos($_POST['post_msg'],'\'')!==false)
+        {
+            //potential SQL injection check
+            $postErr[] = "Potential SQL injection attack";
+            $valid = false;
+        }
+        if($valid === true) {
+            $vm = PostVM::newPostInstance();
+            if($vm->postType == PostVM::VALID_POST) {
+                Page::$title = 'Post Details';
+                require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
+            }else {
+                Page::$title = 'New Post';
+                require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
+            }
+
         }else {
             Page::$title = 'New Post';
             require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');

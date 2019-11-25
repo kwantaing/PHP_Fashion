@@ -56,18 +56,32 @@
 
 					<form id="contactFormAdvanced" action="." method="POST" enctype="multipart/form-data">
 						<!-- <input type="hidden" value="true" name="emailSent" id="emailSent"> -->
+						<div class="error" style="color:red">
+														<?php 
+															if(isset($postErr)){
+																foreach($postErr as $msg){
+																	echo $msg;
+																} 
+															}?>
+						</div>	
 						<input type="hidden" name="ctlr" value="post">
 						<input type="hidden" name="action" value="newPost">
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label class="required font-weight-bold text-dark">Name</label>
-								<input name = "userName" type="text" disabled value="<?php echo $_SESSION['userName'] ?>" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
+								<input name = "post_user" type="text" disabled value="<?php echo $_SESSION['userName'] ?>" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label class="font-weight-bold text-dark">Title <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
+								<input class="form-control" type="text" name="post_title">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Article of Clothing</label>
-								<select name="clothing_type"  data-msg-required="Please enter the subject." class="form-control" name="subject" id="subject" required>
+								<select name="article_type"  data-msg-required="Please enter the subject." class="form-control" name="subject" id="subject" required>
 									<option value="">...</option>
 									<option value="top">Top</option>
 									<option value="bottom">Bottom</option>
@@ -79,13 +93,13 @@
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Image <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
-								<input class="text" type="text" name="post_img">
+								<input class="form-control" type="text" name="post_img">
 							</div>
 						</div>
 						<!-- <div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
-								<input class="d-block" type="file" name="attachment" id="attachment">
+								<input class="d-block" type="file" name="img-attachment">
 							</div>
 						</div> -->
 						<div class="form-row">

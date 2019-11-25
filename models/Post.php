@@ -3,11 +3,12 @@
 class Post {
 
     private $post_id;
+    private $post_title;
     private $post_user;
-    private $clothing_type;
+    private $article_type;
     private $post_img;
     private $post_msg;
-    
+
     function __construct($data = array()) {
         if (!is_array($data)) {
             trigger_error('Non-array input to ' . get_class() . 'constructor');

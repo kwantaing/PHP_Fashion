@@ -22,8 +22,6 @@ class PostDAM extends DAM {
     }
     
     private function bindValues($post, $statement) {
-        echo var_dump($post);
-        echo "IN BIND VALUES";
         $statement->bindValue(':post_user', $post->post_user);
         $statement->bindValue(':post_title', $post->post_title);
         $statement->bindValue(':article_type', $post->article_type);        

@@ -1,6 +1,4 @@
 <?php require('views/header.php'); ?>
-<?php session_start();?>
-
 <main>
 		<div class="body">
 			<div role="main" class="main">

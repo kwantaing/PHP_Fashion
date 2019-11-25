@@ -1,4 +1,4 @@
-<?php require('views/header.php'); session_start();?>
+<?php require('views/header.php');?>
 <main>
     <div class="body">
 		<!--Navigation was here -->

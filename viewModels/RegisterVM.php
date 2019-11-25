@@ -58,7 +58,9 @@ class RegisterVM {
             return false;
         }else{
             $vm->userType = self::VALID_REG;
-            session_start();
+            if(!isset($_SESSION)) {
+                session_start();
+            }
             after_successful_login();
             $_SESSION ['userName'] = $vm->user->firstName . ' ' . $vm->user->lastName;
             $_SESSION ['email'] = $vm->enteredUserEmail;

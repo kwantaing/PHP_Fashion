@@ -18,7 +18,9 @@ class HomeController extends DefaultController {
         require(APP_NON_WEB_BASE_DIR . 'views/aboutUs.php');
     }
     public function featured(){
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         //check session logged in
         before_every_protected_page();
         //if session in

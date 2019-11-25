@@ -1,4 +1,5 @@
 <?php
+
 // Form upload functions
 // Configuration
 // Use MAX_FILE_SIZE in your form but don't trust it.

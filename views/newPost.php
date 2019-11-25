@@ -96,12 +96,12 @@
 								<input class="form-control" type="text" name="post_img">
 							</div>
 						</div>
-						<!-- <div class="form-row">
+						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
-								<input class="d-block" type="file" name="img-attachment">
+								<input class="d-block" type="file" name="img_attachment">
 							</div>
-						</div> -->
+						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-4">
 								<label class="required font-weight-bold text-dark">Post Message</label>
@@ -115,7 +115,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-5">
-								<input type="submit"  value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
+								<input type="submit"  name=="submit" value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
 							</div>
 						</div>
 					</form>

@@ -16,8 +16,14 @@ class PostController extends DefaultController {
     //     echo "<img src='" . $_POST['post_img'] . "'/>";
     // }
 
+    // public function newPostPOST() {
+    //     upload_file('img_attachment');
+
+    // }
     public function newPostPOST() {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         $valid = true;
         if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false        ||strpos($_POST['article_type'],';')!==false || strpos($_POST['article_type'],'\'')!==false
         ||strpos($_POST['post_msg'],';')!==false || strpos($_POST['post_msg'],'\'')!==false)
@@ -27,29 +33,46 @@ class PostController extends DefaultController {
             $valid = false;
         }
         if($valid === true) {
+            $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
             $vm = PostVM::newPostInstance();
             if($vm->postType == PostVM::VALID_POST) {
+                upload_file('img_attachment');
                 Page::$title = 'Post Details';
+                if(!isset($_SESSION)) {
+                    session_start();
+                }
                 require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
             }else {
                 Page::$title = 'New Post';
+                if(!isset($_SESSION)) {
+                    session_start();
+                }
                 require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
             }
 
         }else {
             Page::$title = 'New Post';
+            if(!isset($_SESSION)) {
+                session_start();
+            }
             require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
 
         }
     }
 
     public function newPostGET(){
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         before_every_protected_page();
         //check session logged in
         //if session in
 
         require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
+    }
+
+    public function readPost() {
+
     }
 
     // public function featured(){

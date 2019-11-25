@@ -16,15 +16,21 @@ class PostDAM extends DAM {
         $statement->closeCursor();
     }
     
+    public function readPost($post_id){
+        $query = 'SELECT * FROM Posts where post_id = :post_id';
+        $statement = $this->db->prepare($query);
+    }
     
     private function bindValues($post, $statement) {
         echo var_dump($post);
+        echo "IN BIND VALUES";
         $statement->bindValue(':post_user', $post->post_user);
         $statement->bindValue(':post_title', $post->post_title);
         $statement->bindValue(':article_type', $post->article_type);        
         $statement->bindValue(':post_img', $post->post_img);
         $statement->bindValue(':post_msg', $post->post_msg);
     }
+
 
     private function mapColsToVars($colArray) {
         $varArray = array();

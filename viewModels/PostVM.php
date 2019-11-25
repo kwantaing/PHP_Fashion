@@ -18,7 +18,8 @@ class PostVM {
         $post_user = $_SESSION['userName'];
         $post_title = filter_input(INPUT_POST, 'post_title');
         $article_type = filter_input(INPUT_POST, 'article_type');
-        $post_img = filter_input(INPUT_POST,'post_img');
+        $post_img = $_SESSION['post_img'];
+        unset($_SESSION['post_img']);
         // sanitize_file_name($_POST['img_attachment']['name']);
         $post_msg = filter_input(INPUT_POST,'post_msg');
 
@@ -27,7 +28,6 @@ class PostVM {
             echo "ERROR";
             $vm->postType = self::INVALID_POST;
         } else{
-            // upload_file('img_attachment');
             $valid = true;
             $newPostArray = array(
                 'post_id' => $post_id,

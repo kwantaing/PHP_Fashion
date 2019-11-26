@@ -19,6 +19,15 @@ class PostDAM extends DAM {
     public function readPost($post_id){
         $query = 'SELECT * FROM Posts where post_id = :post_id';
         $statement = $this->db->prepare($query);
+        $statement->bindValue(':post_id', $post_id);
+        $statement->execute();
+        $post_obj = $statement->fetch();
+        $statement->closeCursor();
+        if($post_obj === null) {
+            //no post with that id
+        }else {
+            return new Post($this->mapColsToVars($post_obj));
+        }
     }
     
     private function bindValues($post, $statement) {
@@ -28,6 +37,7 @@ class PostDAM extends DAM {
         $statement->bindValue(':post_img', $post->post_img);
         $statement->bindValue(':post_msg', $post->post_msg);
     }
+
 
 
     private function mapColsToVars($colArray) {

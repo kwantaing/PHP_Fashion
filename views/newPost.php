@@ -1,7 +1,5 @@
 <?php 
 		require('views/header.php');
-		session_start();
-
 ?>
 
 <div class="body">
@@ -90,12 +88,12 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-row">
+						<!-- <div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Image <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
 								<input class="form-control" type="text" name="post_img">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>

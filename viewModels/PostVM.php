@@ -49,4 +49,11 @@ class PostVM {
         }
         return $vm;
     }
+
+    public static function getPostInstance($post_id) {
+        $vm = new self();
+        $vm->post_obj = $vm->postDAM->readPost($post_id);
+        return $vm;
+
+    }
 }

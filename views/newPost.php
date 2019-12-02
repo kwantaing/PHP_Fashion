@@ -1,4 +1,4 @@
-<?php 
+<?php
 		require('views/header.php');
 ?>
 
@@ -42,7 +42,7 @@
 				</div> -->
                 <div class="col-lg-1"></div>
 				<div class="col-lg-10 order-1 order-lg-2">
-					
+
 					<div class="offset-anchor" id="contact-sent"></div>
 
 					<div class="overflow-hidden mb-1">
@@ -55,15 +55,16 @@
 					<form id="contactFormAdvanced" action="." method="POST" enctype="multipart/form-data">
 						<!-- <input type="hidden" value="true" name="emailSent" id="emailSent"> -->
 						<div class="error" style="color:red">
-														<?php 
+														<?php
 															if(isset($postErr)){
 																foreach($postErr as $msg){
 																	echo $msg;
-																} 
+																}
 															}?>
-						</div>	
+						</div>
 						<input type="hidden" name="ctlr" value="post">
 						<input type="hidden" name="action" value="newPost">
+						<?php echo csrf_token_tag() ?>
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label class="required font-weight-bold text-dark">Name</label>

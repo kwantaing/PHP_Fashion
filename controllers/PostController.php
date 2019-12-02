@@ -22,6 +22,13 @@ class PostController extends DefaultController {
             $postErr[] = "Potential SQL injection attack";
             $valid = false;
         }
+        //CSRF Token Check
+        $CSRFStatus = csrf_token_is_valid();
+        if($CSRFStatus !=== true){
+          $postErr[] = "CSRF Token not valid";
+          $valid = false;
+        }
+
         if($valid === true) {
             $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
             $vm = PostVM::newPostInstance();
@@ -73,8 +80,14 @@ class PostController extends DefaultController {
         before_every_protected_page();//Vincent
         $post_vm = PostVM::getPostInstance($post_id);
         $current_post = $post_vm->post_obj;
+<<<<<<< Updated upstream
 
         //before_every_protected_page();
+=======
+        unset($_SESSION['post_id']);
+
+        before_every_protected_page();
+>>>>>>> Stashed changes
         if(!isset($_SESSION)) {
             session_start();
         }

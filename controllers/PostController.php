@@ -8,24 +8,13 @@ class PostController extends DefaultController {
         parent::__construct();
     }
 
-    // public function newPostPOST() {
-    //     session_start();
-    //     echo "YOU JUST SUBMITTED A NEW POST";
-    //     echo var_dump($_POST);
-    //     echo $_POST['post_img'];
-    //     echo "<img src='" . $_POST['post_img'] . "'/>";
-    // }
-
-    // public function newPostPOST() {
-    //     upload_file('img_attachment');
-
-    // }
     public function newPostPOST() {
         if(!isset($_SESSION)) {
             session_start();
         }
         $valid = true;
-        if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false        ||strpos($_POST['article_type'],';')!==false || strpos($_POST['article_type'],'\'')!==false
+        if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false        
+        ||strpos($_POST['article_type'],';')!==false || strpos($_POST['article_type'],'\'')!==false
         ||strpos($_POST['post_msg'],';')!==false || strpos($_POST['post_msg'],'\'')!==false)
         {
             //potential SQL injection check
@@ -38,10 +27,15 @@ class PostController extends DefaultController {
             if($vm->postType == PostVM::VALID_POST) {
                 upload_file('img_attachment');
                 Page::$title = 'Post Details';
-                if(!isset($_SESSION)) {
-                    session_start();
+                if(PostVM::getLastCreated()===false) {
+                    require('views/newPost.php');
+                }else{
+                    $current_post = PostVM::getLastCreated();
+                    if(!isset($_SESSION)) {
+                        session_start();
+                    }
+                    require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
                 }
-                require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
             }else {
                 Page::$title = 'New Post';
                 if(!isset($_SESSION)) {
@@ -75,7 +69,8 @@ class PostController extends DefaultController {
         if(!isset($_SESSION)) {
             session_start();
         }
-        $current_post = PostVM::getPostInstance('20');
+        $post_vm = PostVM::getPostInstance($post_id);
+        $current_post = $post_vm->post_obj;
         
         before_every_protected_page();
         if(!isset($_SESSION)) {

@@ -29,6 +29,20 @@ class PostDAM extends DAM {
             return new Post($this->mapColsToVars($post_obj));
         }
     }
+    public function getLastCreated(){
+        $query = 'SELECT * FROM Posts WHERE post_id = (SELECT LAST_INSERT_ID())';
+        // select *from LastInsertedRow where Id=(SELECT LAST_INSERT_ID());
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $post_obj = $statement->fetch();
+        $statement->closeCursor();
+        if($post_obj === null) {
+            //no post with that id
+            return false;
+        }else {
+            return new Post($this->mapColsToVars($post_obj));
+        }
+    }
     
     private function bindValues($post, $statement) {
         $statement->bindValue(':post_user', $post->post_user);
@@ -38,7 +52,20 @@ class PostDAM extends DAM {
         $statement->bindValue(':post_msg', $post->post_msg);
     }
 
+    public function getlastNine(){
+        $query = "SELECT TOP 9 * FROM POSTS ORDER BY post_id DESC";
+        $statment = $this->db->prepare($query);
+        $statement->execute();
+        $DBArray = $statement->fetch();
+        $statement->closeCursor();
+        $ObjectArray = [];
+        foreach ($Post as $DBArray) {
+            echo var_dump($Post);
+            $ObjectArray[] = new Post($this->mapColsToVars($Post));
+        }
+        return $ObjectArray;
 
+    }
 
     private function mapColsToVars($colArray) {
         $varArray = array();

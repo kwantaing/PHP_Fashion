@@ -15,6 +15,7 @@ $max_file_size = 1048576; // 1 MB expressed in bytes
 // access those files. The browser can't access them directly.
 //STORES PERM FILES LOCATION
 $upload_path = APP_NON_WEB_BASE_DIR .'uploadedFiles'; //Change to your needs
+// $upload_path = '/Applications/MAMP/htdocs/ProjectFrameWorkWEB/uploadedFiles';
 // Define allowed filetypes to check against during validations
 $allowed_mime_types = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
 $allowed_extensions = ['png', 'gif', 'jpg', 'jpeg'];
@@ -26,12 +27,12 @@ function file_upload_error($error_integer) {
 		// http://php.net/manual/en/features.file-upload.errors.php
 		UPLOAD_ERR_OK 				=> "No errors.",
 		UPLOAD_ERR_INI_SIZE  	=> "Larger than upload_max_filesize.",
-	  UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
-	  UPLOAD_ERR_PARTIAL 		=> "Partial upload.",
-	  UPLOAD_ERR_NO_FILE 		=> "No file.",
-	  UPLOAD_ERR_NO_TMP_DIR => "No temporary directory.",
-	  UPLOAD_ERR_CANT_WRITE => "Can't write to disk.",
-	  UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
+		UPLOAD_ERR_FORM_SIZE 	=> "Larger than form MAX_FILE_SIZE.",
+		UPLOAD_ERR_PARTIAL 		=> "Partial upload.",
+		UPLOAD_ERR_NO_FILE 		=> "No file.",
+		UPLOAD_ERR_NO_TMP_DIR => "No temporary directory.",
+		UPLOAD_ERR_CANT_WRITE => "Can't write to disk.",
+		UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
 	);
 	return $upload_errors[$error_integer];
 }

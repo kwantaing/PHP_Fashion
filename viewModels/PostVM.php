@@ -40,7 +40,6 @@ class PostVM {
 
             if($valid === true) {
                 $vm->post = new Post($newPostArray);
-                echo var_dump($vm->post);
                 $vm->postDAM->newPostCreate($vm->post);
                 $vm->postType = self::VALID_POST;
             }else{
@@ -54,6 +53,15 @@ class PostVM {
         $vm = new self();
         $vm->post_obj = $vm->postDAM->readPost($post_id);
         return $vm;
+    }
 
+    public static function getLastCreated() {
+        $vm = new self();
+        $vm->post_obj = $vm->postDAM->getLastCreated();
+        if($vm->post_obj === false) {
+            return false;
+        }else  {
+            return $vm->post_obj;
+        }
     }
 }

@@ -65,23 +65,19 @@ class PostController extends DefaultController {
         require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
     }
 
-    public function readPost($post_id) {
+    public function readPost() {
         if(!isset($_SESSION)) {
             session_start();
         }
-        $post_vm = PostVM::getPostInstance($post_id);
+        $post_vm = PostVM::getPostInstance($_SESSION['post_id']);
         $current_post = $post_vm->post_obj;
+        unset($_SESSION['post_id']);
         
         before_every_protected_page();
         if(!isset($_SESSION)) {
             session_start();
         }
         require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
-    }
-    public function readPosts() {
-        if(!isset($_SESSION)) {
-            session_start();
-        }
     }
 
     // public function featured(){

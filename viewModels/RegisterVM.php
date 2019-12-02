@@ -63,7 +63,7 @@ class RegisterVM {
             }
             after_successful_login();
             $_SESSION ['userName'] = $vm->user->firstName . ' ' . $vm->user->lastName;
-            $_SESSION ['email'] = $vm->enteredUserEmail;
+            $_SESSION ['email'] = $vm->user->email;
             return $vm;
         }
     }

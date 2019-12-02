@@ -113,8 +113,8 @@ class UserController extends DefaultController {
     // }
 
     public function registerPOST() {
-        session_start();
         after_successful_logout();
+        session_start();
         $valid = true;
         $regErr = [];
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['firstName']) || !isset($_POST['lastName'])){
@@ -137,9 +137,10 @@ class UserController extends DefaultController {
             $vm = RegisterVM::regNewUserInstance();
             Page::$title = 'Fashion Advices - Login & Registration';
             if($vm->userType == RegisterVM::VALID_REG){
+                after_successful_login();
                 $vm = PostVM::getLastNine();
                 $top_posts = $vm->ObjectArray;
-                require(APP_NON_WEB_BASE_DIR .'views/userHome.php');
+                require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             }else {
                 $delay = true;
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');

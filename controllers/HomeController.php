@@ -34,52 +34,5 @@ class HomeController extends DefaultController {
         $vm = AdminProfileVM::getInstance();
         $this->displayUpdateForm($vm);
     }
-    
-    public function updateProfile() {
-        $vm = AdminProfileVM::getUpdateInstance();
-        if ($vm->errorMsg != '') {
-            before_every_protected_page();
-            $this->displayUpdateForm($vm);
-        } else {
-            $this->showMenu();
-        }
-    }
-    
-    
-    private function goToView($vm) {
-        
-        // if an error message exists, display the error.
-        if ($vm->errorMsg != '') {
-            $error = $vm->errorMsg;
-            include(NON_WEB_BASE_DIR .'views/error.php');
-        } else {
-            Page::$title = 'Admin Console';
-            Page::$userName = $_SESSION ['userName'];
-            Page::setNavLinks(array('admin profile', 'logout'));
-            require(NON_WEB_BASE_DIR .'views/adminMenu.php');
-        }
-    }
 
-    private function displayUpdateForm($vm) {
-        Page::$title = 'Update Profile';
-        Page::$userName = $_SESSION ['userName'];
-        Page::setNavLinks(array('admin menu', 'logout', 'contact'));
-        include_once(NON_WEB_BASE_DIR .'views/adminProfileUpdate.php');
-    }
-
-    private function displayManageAdminForm($vm) {
-        Page::$title = 'Manage Administrators';
-        Page::$userName = $_SESSION ['userName'];
-        Page::setNavLinks(array('admin menu', 'logout', 'contact'));
-        include_once(NON_WEB_BASE_DIR .'views/manageAdministrators.php');
-    }
-    
-    private function protectAdminMgmt($vm) {
-        if ($vm->errorMsg === 'Access Denied') {
-            $controller = new LoginController();
-            $controller->logout();
-        } else {
-            $this->displayManageAdminForm($vm);
-        }
-    }
 }

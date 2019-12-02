@@ -85,6 +85,8 @@
 									<option value="bottom">Bottom</option>
 									<option value="shoes">Shoes</option>
 									<option value="accessories">Accessories</option>
+									<option value="Outfit">Outfit</option>
+									<option value="Other">Other</option>
 								</select>
 							</div>
 						</div>

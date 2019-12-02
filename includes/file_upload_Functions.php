@@ -4,7 +4,7 @@
 // Configuration
 // Use MAX_FILE_SIZE in your form but don't trust it.
 // Check it again in your application
-$max_file_size = 1048576; // 1 MB expressed in bytes
+$max_file_size = 10000000; // 5 MB expressed in bytes
 // Where to store uploaded files?
 // Choose a directory outside of the public path, unless the file
 // should be publicly visible/accessible.

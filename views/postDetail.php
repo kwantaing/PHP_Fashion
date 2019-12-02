@@ -1,7 +1,7 @@
 <?php require('views/header.php'); ?>
 
 <div class="error" style="color:red;">
-	<?php echo var_dump($current_post); ?>	
+	<?php // echo var_dump($current_post); ?>	
 </div>
 
 <?php
@@ -54,19 +54,17 @@
 					</div>
 				</section>
 
-				<div class="container py-4">
+				<div class="container py-4" >
 
 					<div class="row">
 						<div class="col">
 							<div class="blog-posts single-post">
 							
 								<article class="post post-large blog-single-post border-0 m-0 p-0">
-                                    <div class="post-image ml-0">
+                                    <div class="post-image ml-0" style="text-align:center;">
 
 								<h1 class="text-dark font-weight-bold text-8"><?php echo $current_post->post_title; ?></h1>
-											<?php echo '<img style="width:1100;length:500;" src="' . $src . '">'; ?>
-											<!-- <img src="content/img/blog/wide/blog-11.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" /> -->
-										</a>
+											<?php echo '<img style="display:inline-block;max-width:850px;max-height:600px;" src="' . $src . '">'; ?>										</a>
 									</div>
 							
 									<div class="post-date ml-0">
@@ -76,7 +74,7 @@
 							
 									<div class="post-content ml-0">
 							
-										<h2 class="font-weight-bold"><a href="blog-post.html"><?php echo $current_post->post_title ?></a></h2>
+										<h2 class="font-weight-bold"><a href="#"><?php echo $current_post->post_title ?></a></h2>
 							
 										<div class="post-meta">
 											<span><i class="far fa-user"></i> By <a href="#"><?php echo $current_post->post_user ?></a> </span>

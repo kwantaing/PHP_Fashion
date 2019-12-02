@@ -1,7 +1,7 @@
 <?php
 
 class PostController extends DefaultController {
-    
+
     protected $model = null;
 
     public function __construct() {
@@ -12,8 +12,9 @@ class PostController extends DefaultController {
         if(!isset($_SESSION)) {
             session_start();
         }
+        before_every_protected_page(); //Vincent
         $valid = true;
-        if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false        
+        if(strpos($_POST['post_title'],';')!==false || strpos($_POST['post_title'],'\'')!==false
         ||strpos($_POST['article_type'],';')!==false || strpos($_POST['article_type'],'\'')!==false
         ||strpos($_POST['post_msg'],';')!==false || strpos($_POST['post_msg'],'\'')!==false)
         {
@@ -69,10 +70,11 @@ class PostController extends DefaultController {
         if(!isset($_SESSION)) {
             session_start();
         }
+        before_every_protected_page();//Vincent
         $post_vm = PostVM::getPostInstance($post_id);
         $current_post = $post_vm->post_obj;
-        
-        before_every_protected_page();
+
+        //before_every_protected_page();
         if(!isset($_SESSION)) {
             session_start();
         }
@@ -91,5 +93,5 @@ class PostController extends DefaultController {
     //     //if session in
     //     require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
     // }
-        
+
 }

@@ -1,7 +1,7 @@
 <?php
 
 class UserController extends DefaultController {
-    
+
     protected $model = null;
 
     public function __construct() {
@@ -19,7 +19,9 @@ class UserController extends DefaultController {
         parent::__construct();
     }
     public function logRegGET() {
-        session_start();
+      if(!isset($_SESSION)) {
+          session_start();
+      }
         Page::$title = 'Fashion Advices - Login & Registration';
         require(APP_NON_WEB_BASE_DIR .'views/loginReg.php');
     }
@@ -52,7 +54,9 @@ class UserController extends DefaultController {
 
     // }
     public function loginPOST() {
-        session_start();
+      if(!isset($_SESSION)) {
+          session_start();
+      }
         $delay = false;
         after_successful_logout();
         if(!isset($_POST['email']) && !isset($_POST['password'])){
@@ -77,10 +81,13 @@ class UserController extends DefaultController {
         }
 
     }
-    
+
     public function logout() {
-        session_start();
-        session_destroy();
+      if(!isset($_SESSION)) {
+          session_start();
+      }
+        //session_destroy();
+        end_session(); //Vincent
         after_successful_logout();
         require(APP_NON_WEB_BASE_DIR . 'views/home.php');
     }
@@ -113,7 +120,9 @@ class UserController extends DefaultController {
     // }
 
     public function registerPOST() {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
         after_successful_logout();
         $valid = true;
         $regErr = [];
@@ -154,5 +163,5 @@ class UserController extends DefaultController {
 
     }
 
-        
+
 }

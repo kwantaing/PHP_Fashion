@@ -25,17 +25,27 @@ class HomeController extends DefaultController {
         //get 9 posts now
         $vm = PostVM::getLastNine();
         $top_posts = $vm->ObjectArray;
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
         require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
     }
     
     public function getProfile() {
+      if(!isset($_SESSION)) {
+          session_start();
+      }
         before_every_protected_page();
         $vm = AdminProfileVM::getInstance();
         $this->displayUpdateForm($vm);
     }
-    
+
     public function updateProfile() {
+      if(!isset($_SESSION)) {
+          session_start();
+      }
         $vm = AdminProfileVM::getUpdateInstance();
         if ($vm->errorMsg != '') {
             before_every_protected_page();
@@ -44,10 +54,13 @@ class HomeController extends DefaultController {
             $this->showMenu();
         }
     }
-    
-    
+
+
     private function goToView($vm) {
-        
+      if(!isset($_SESSION)) {
+          session_start();
+      }
+
         // if an error message exists, display the error.
         if ($vm->errorMsg != '') {
             $error = $vm->errorMsg;
@@ -73,7 +86,7 @@ class HomeController extends DefaultController {
         Page::setNavLinks(array('admin menu', 'logout', 'contact'));
         include_once(NON_WEB_BASE_DIR .'views/manageAdministrators.php');
     }
-    
+
     private function protectAdminMgmt($vm) {
         if ($vm->errorMsg === 'Access Denied') {
             $controller = new LoginController();

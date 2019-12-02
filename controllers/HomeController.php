@@ -21,18 +21,13 @@ class HomeController extends DefaultController {
         if(!isset($_SESSION)) {
             session_start();
         }
-        //check session logged in
         before_every_protected_page();
-        //if session in
+        //get 9 posts now
+        $vm = PostVM::getLastNine();
+        $top_posts = $vm->ObjectArray;
+        
         require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
     }
-    // public function newPost(){
-    //     session_start();
-    //     before_every_protected_page();
-    //     //check session logged in
-    //     //if session in
-    //     require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
-    // }
     
     public function getProfile() {
         before_every_protected_page();

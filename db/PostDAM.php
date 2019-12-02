@@ -53,16 +53,20 @@ class PostDAM extends DAM {
     }
 
     public function getlastNine(){
-        $query = "SELECT TOP 9 * FROM POSTS ORDER BY post_id DESC";
-        $statment = $this->db->prepare($query);
+        $query = "SELECT * FROM Posts ORDER BY post_id DESC LIMIT 9";
+        $statement = $this->db->prepare($query);
         $statement->execute();
-        $DBArray = $statement->fetch();
-        $statement->closeCursor();
         $ObjectArray = [];
-        foreach ($Post as $DBArray) {
-            echo var_dump($Post);
-            $ObjectArray[] = new Post($this->mapColsToVars($Post));
+        while ($obj = $statement->fetchObject(__CLASS__)){
+            $ObjectArray[$obj->post_id] = $obj;
         }
+        $statement->closeCursor();
+        // echo "****************";
+        // foreach ($DBArray as $Post) {
+        //     // echo var_dump($Post);
+        //     $ObjectArray[] = new Post($this->mapColsToVars($Post));
+        // }
+        echo var_dump($ObjectArray);
         return $ObjectArray;
 
     }

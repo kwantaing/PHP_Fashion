@@ -55,6 +55,11 @@ class PostVM {
         return $vm;
     }
 
+    public static function getLastNine() {
+        $vm = new self();
+        $vm->ObjectArray = $vm->postDAM->getlastNine();
+        return $vm;
+    }
     public static function getLastCreated() {
         $vm = new self();
         $vm->post_obj = $vm->postDAM->getLastCreated();

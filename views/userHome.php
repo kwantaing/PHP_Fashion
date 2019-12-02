@@ -1,5 +1,6 @@
 <?php 
 		require('views/header.php'); 
+		echo var_dump($top_posts);
 ?>
 <div class="body">
 			<div role="main" class="main">

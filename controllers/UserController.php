@@ -63,6 +63,8 @@ class UserController extends DefaultController {
             $vm = LoginVM::getInstance();
             if ($vm->userType === LoginVM::VALID_LOGIN) {
                 after_successful_login();
+                $vm = PostVM::getLastNine();
+                $top_posts = $vm->ObjectArray;
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             } else {
                 $delay = true;
@@ -135,6 +137,8 @@ class UserController extends DefaultController {
             $vm = RegisterVM::regNewUserInstance();
             Page::$title = 'Fashion Advices - Login & Registration';
             if($vm->userType == RegisterVM::VALID_REG){
+                $vm = PostVM::getLastNine();
+                $top_posts = $vm->ObjectArray;
                 require(APP_NON_WEB_BASE_DIR .'views/userHome.php');
             }else {
                 $delay = true;

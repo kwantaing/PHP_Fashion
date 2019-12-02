@@ -1,6 +1,5 @@
 <?php 
 		require('views/header.php'); 
-		echo var_dump($top_posts);
 ?>
 <div class="body">
 			<div role="main" class="main">
@@ -29,18 +28,54 @@
 				</section>
 
 				<div class="container py-4">
-
+					
 					<div class="row">
 						<div class="col">
 							<div class="blog-posts">
 
 								<div class="row">
 
-									<div class="col-md-4">
+									<?php 
+										foreach($top_posts as $post) {
+											$image = APP_NON_WEB_BASE_DIR . 'uploadedFiles/' . $post->post_img;
+											// Read image path, convert to base64 encoding
+											$imageData = base64_encode(file_get_contents($image));
+											
+											// Format the image SRC:  data:{mime};base64,{data};
+											$src = 'data: '.mime_content_type($image).';base64,'.$imageData;
+											echo
+												'<div class="col-md-4">
+													<article class="post post-medium border-0 pb-0 mb-5">
+														<div class="post-image" style="text-align:center;">
+															<a href="blog-post.html">
+																<img src="'. $src . '" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" style="max-height:350px;" alt="" />
+															</a>
+														</div>
+														<div class="post-content">
+															<h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="blog-post.html">'. $post->post_title . '</a></h2>
+															<p>';
+															if(strlen($post->post_msg)> 50) {
+																echo substr($post->post_msg, 0 , 50) . '...';
+															}else{
+																echo $post->post_msg;
+															} 
+															echo '</p>
+															<div class="post-meta">
+																<span><i class="far fa-user"></i> By <a href="#">' . $post->post_user . '</a> </span>
+																<span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
+																<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
+																<span class="d-block mt-2"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+															</div>
+														</div>
+													</article>
+												</div>';
+										}
+									?>
+									<!-- <div class="col-md-4">
 										<article class="post post-medium border-0 pb-0 mb-5">
-											<div class="post-image">
+											<div class="post-image"style="text-align:center;">
 												<a href="blog-post.html">
-													<img src="content/img/blog/medium/blog-1.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+													<img src="content/img/blog/medium/blog-1.jpg" style="max-height:350px;" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
 												</a>
 											</div>
 
@@ -58,8 +93,8 @@
 
 											</div>
 										</article>
-									</div>
-
+									</div> -->
+										<!--
 									<div class="col-md-4">
 										<article class="post post-medium border-0 pb-0 mb-5">
 											<div class="post-image">
@@ -251,7 +286,7 @@
 											</div>
 										</article>
 									</div>
-								</div>
+								</div> -->
 	
 								<div class="row">
 									<div class="col">

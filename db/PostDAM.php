@@ -61,12 +61,7 @@ class PostDAM extends DAM {
             $ObjectArray[$obj->post_id] = $obj;
         }
         $statement->closeCursor();
-        // echo "****************";
-        // foreach ($DBArray as $Post) {
-        //     // echo var_dump($Post);
-        //     $ObjectArray[] = new Post($this->mapColsToVars($Post));
-        // }
-        echo var_dump($ObjectArray);
+        // echo var_dump($ObjectArray);
         return $ObjectArray;
 
     }

@@ -68,9 +68,16 @@ function file_contains_php($file) {
 	$position = strpos($contents, '<?php');
 	return $position !== false;
 }
+
+
+
+
+
 // Runs file being uploaded through a series of validations.
 // If file passes, it is moved to a permanent upload directory
 // and its execute permissions are removed.
+
+
 function upload_file($field_name) {
 	global $upload_path, $max_file_size, $allowed_mime_types, $allowed_extensions, $check_is_image, $check_for_php;
 	if(isset($_FILES[$field_name])) {
@@ -90,7 +97,11 @@ function upload_file($field_name) {
 		// Prepend the base upload path to prevent hacking the path
 		// Example: $file_name = '/etc/passwd' becomes harmless
 		$file_path = $upload_path . '/' . $file_name;
+
+
+
 		if($error > 0) {
+			$valid = false;
 			// Display errors caught by PHP
 			echo "Error: " . file_upload_error($error);
 		} elseif(!is_uploaded_file($tmp_file)) {
@@ -125,29 +136,30 @@ function upload_file($field_name) {
 			// Because no other profile_photo has that ID, the path is unique.
 		} else {
 			// Success Messages here!
-			echo "File was uploaded without errors.<br />";
-			echo "File name is '{$file_name}'.<br />";
-			echo "File's unique name is '{$new_name}'.<br />";
-			echo "File references an uploaded file.<br />";
+			//echo "File was uploaded without errors.<br />";
+			//echo "File name is '{$file_name}'.<br />";
+			//echo "File's unique name is '{$new_name}'.<br />";
+			//echo "File references an uploaded file.<br />";
 			// Two ways to get the size. Should always be the same.
-			echo "Uploaded file size was {$file_size} bytes.<br />";
+			//echo "Uploaded file size was {$file_size} bytes.<br />";
 			// filesize() is most useful when not working with uploaded files.
 			$tmp_filesize = filesize($tmp_file); // always in bytes
-			echo "Temp file size is {$tmp_filesize} bytes.<br />";
-			echo "Temp file location: {$tmp_file}<br />";
+			//echo "Temp file size is {$tmp_filesize} bytes.<br />";
+			//echo "Temp file location: {$tmp_file}<br />";
 			// move_uploaded_file has is_uploaded_file() built-in
 			if(move_uploaded_file($tmp_file, $file_path)) {
-				echo "File moved to: {$file_path}<br />";
+				//echo "File moved to: {$file_path}<br />";
 				// remove execute file permissions from the file
 				if(chmod($file_path, 0644)) {
-					echo "Execute permissions removed from file.<br />";
+					//echo "Execute permissions removed from file.<br />";
 					$file_permissions = file_permissions($file_path);
-					echo "File permissions are now '{$file_permissions}'.<br />";
+					//echo "File permissions are now '{$file_permissions}'.<br />";
 				} else {
-					echo "Error: Execute permissions could not be removed.<br />";
+					//echo "Error: Execute permissions could not be removed.<br />";
 				}
 			}
-		}
+		} //end of success
+
 	}
 }
 ?>

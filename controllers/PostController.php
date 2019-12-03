@@ -29,11 +29,16 @@ class PostController extends DefaultController {
           $valid = false;
         }
 
+        //File upload and validation
+        $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
+        upload_file('img_attachment');
+
+        //if everything is valid, execute
         if($valid === true) {
-            $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
+            //$_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
             $vm = PostVM::newPostInstance();
             if($vm->postType == PostVM::VALID_POST) {
-                upload_file('img_attachment');
+                //upload_file('img_attachment');
                 Page::$title = 'Post Details';
                 if(PostVM::getLastCreated()===false) {
                     require('views/newPost.php');

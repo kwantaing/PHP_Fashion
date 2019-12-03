@@ -43,7 +43,7 @@ class UserDAM extends DAM {
         $statement->closeCursor();
         if($userDB == null){
             //no user by the email, OK to create
-            $query = 
+            $query =
                     'INSERT INTO Users (firstName, lastName, email, password)
                     VALUES(:firstName, :lastName, :email, :password)';
             $statement = $this->db->prepare($query);
@@ -58,7 +58,7 @@ class UserDAM extends DAM {
 
     /**
      * Delete the specified User object from the database.
-     * 
+     *
      * @param type $user the User object to be deleted.
      */
     public function deleteUser($user) {
@@ -67,7 +67,7 @@ class UserDAM extends DAM {
 
     /**
      * Delete the User object from the database with the specified username.
-     * 
+     *
      * @param type $userId the ID of the User to be deleted.
      */
     public function deleteUserById($userId) {

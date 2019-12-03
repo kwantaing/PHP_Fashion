@@ -21,9 +21,15 @@ class RegisterVM {
         $user_id = '';
         $valid = true;
         $regErr = [];
-        $firstName = filter_input(INPUT_POST,'firstName');
-        $lastName = filter_input(INPUT_POST,'lastName');
-        $email = filter_input(INPUT_POST,'email');
+
+        // $firstName = filter_input(INPUT_POST,'firstName');
+        // $lastName = filter_input(INPUT_POST,'lastName');
+        // $email = filter_input(INPUT_POST,'email');
+
+        $firstName = hPOST('firstName');  //Vincents
+        $lastName = hPOST('lastName');
+        $email = emailPOST('email');
+
         if($firstName === null or $lastName === null or $email === null){
             $regErr[] = 'Please enter in all fields';
             $valid = false;

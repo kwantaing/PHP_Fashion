@@ -16,12 +16,18 @@ class PostVM {
         $post_id = '';
         $valid = true;
         $post_user = $_SESSION['userName'];
-        $post_title = filter_input(INPUT_POST, 'post_title');
-        $article_type = filter_input(INPUT_POST, 'article_type');
+        //$post_title = filter_input(INPUT_POST, 'post_title');
+        //$article_type = filter_input(INPUT_POST, 'article_type');
+
+        $post_title =  hPOST('post_title'); //Vincent
+        $article_type = hPOST('article_type');
+
         $post_img = $_SESSION['post_img'];
         unset($_SESSION['post_img']);
         // sanitize_file_name($_POST['img_attachment']['name']);
-        $post_msg = filter_input(INPUT_POST,'post_msg');
+        //$post_msg = filter_input(INPUT_POST,'post_msg');
+
+        $post_msg = hPOST('post_msg');  //Vincent
 
         if($post_user === null or $post_title === null  or $article_type === null or $post_msg === null) {
             $valid = false;

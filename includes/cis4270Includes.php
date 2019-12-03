@@ -13,6 +13,7 @@ include_once(APP_NON_WEB_BASE_DIR .'includes/whitelistAchtung.php');
 include_once(APP_NON_WEB_BASE_DIR .'includes/sessionFunctions.php');
 include_once(APP_NON_WEB_BASE_DIR .'includes/tagFunctions.php');
 include_once(APP_NON_WEB_BASE_DIR .'includes/file_upload_Functions.php');
+include_once(APP_NON_WEB_BASE_DIR .'includes/validationFunctions.php');
 include_once(APP_NON_WEB_BASE_DIR .'includes/csrf_token_functions.php');
 include_once(APP_NON_WEB_BASE_DIR .'controllers/DefaultController.php');
 include_once(APP_NON_WEB_BASE_DIR .'controllers/UserController.php');
@@ -41,5 +42,3 @@ include_once(APP_NON_WEB_BASE_DIR .'viewModels/MessageVM.php');
 // include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVM.php');
 
 // include_once(APP_NON_WEB_BASE_DIR .'viewModels/ProductsVMAchtung.php');
-
-

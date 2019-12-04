@@ -78,55 +78,21 @@ class UserController extends DefaultController {
                 Page::$title = 'Login & Registration';
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
             }
-            //validations
-
-            //save to session?
         }
 
     }
     
     public function logout() {
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        session_destroy();
         after_successful_logout();
-        Page::$title = 'Featured Posts';
+        Page::$title = 'Clothing in Style - Four to Seven Tee';
         require(APP_NON_WEB_BASE_DIR . 'views/home.php');
     }
-    // public function registerPOST() {
-    //     Page::$title = 'Fashion Advices - Login & Registration';
-    //     $valid = true;
-    //     $regErr = [];
-    //     if(!isset($_POST['email']) && !isset($_POST['password'])){
-    //         $regErr[] = "email field empty";
-    //         $valid = false;
-    //     }else{
-    //         $sanitized_email = emailPOST($_POST['email']);
-    //     }
-    //     if($_POST['password']!=$_POST['pwConfirm']){
-    //         $regErr[] = "passwords do not match";
-    //         $valid = false;
-    //     }else{
-    //         echo $_POST['password'];
-    //     }
-    //     if($valid === true) {
-    //         $hashed_pw = password_hash($_POST['password'],PASSWORD_BCRYPT);
-    //         echo "\n $hashed_pw";
-    //         //save user to databse
-    //         //set user as session user
-    //         //redirect to user homepage
-    //         require(APP_NON_WEB_BASE_DIR .'views/userHome.php');
-    //     }else {
-    //         require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
-    //     }
-    // }
-
     public function registerPOST() {
         after_successful_logout();
         session_start();
         $valid = true;
         $regErr = [];
+        // $regex = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
         if(!isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['firstName']) || !isset($_POST['lastName'])){
             $regErr[] = "Please fill in all fields";
             $valid = false;
@@ -143,6 +109,14 @@ class UserController extends DefaultController {
             $regErr[] = "Potential SQL injection attack";
             $valid = false;
         }
+        if($valid == true && strlen($_POST['password'])<7) {
+            $regErr[]= "Password must contain at least 6 characters.";
+            $valid = false;
+        }
+        // if(preg_match($PWregex,$_POST['password')===0 or preg_match($PWregex,$_POST['password')===false){
+        //     $regErr[] = "Password must contain 6 to 14 characters: at least one Uppercase letter, one lowercase letter,and one number.";
+        //     $valid = false;
+        // }
         if($valid == true){
             $vm = RegisterVM::regNewUserInstance();
             Page::$title = 'Login & Registration';
@@ -154,6 +128,7 @@ class UserController extends DefaultController {
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             }else {
                 $delay = true;
+                Page::$title = 'Login & Registration';
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
             }
 

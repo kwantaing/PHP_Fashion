@@ -47,7 +47,7 @@ class RegisterVM {
                 $regErr[] = $vm->userDAM->newUserCreate($vm->user);
         }
             foreach($regErr as $err){
-                echo $err;
+                // echo $err;
                 if($err === "user already exists with that email"){
                     $valid = false;
                 }

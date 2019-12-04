@@ -1,6 +1,11 @@
 <?php require('views/header.php'); ?>
+<?php if(isset($_SESSION)){
+	session_destroy();
+}
+?>
 <main>
 		<div class="body">
+
 			<div role="main" class="main">
 			<?php 
 				if(isset($delay)){

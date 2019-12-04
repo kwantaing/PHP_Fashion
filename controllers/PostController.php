@@ -39,6 +39,7 @@ class PostController extends DefaultController {
                         session_start();
                     }
                     before_every_protected_page();
+                    
                     require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');           
                 
 
@@ -53,7 +54,9 @@ class PostController extends DefaultController {
                     }
                     Page::$title = $current_post->post_title;
                     before_every_protected_page();
-                    require(APP_NON_WEB_BASE_DIR . 'views/postDetail.php');
+                    header("Location: ?ctlr=post&action=readPost&id=" . $current_post->post_id);
+
+                    // require(APP_NON_WEB_BASE_DIR . 'views/postDetail.php');
                 }
             }else {
                 Page::$title = 'New Post';

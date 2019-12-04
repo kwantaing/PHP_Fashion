@@ -71,7 +71,8 @@ class UserController extends DefaultController {
                 $vm = PostVM::getLastNine();
                 $top_posts = $vm->ObjectArray;
                 Page::$title = 'Featured Posts';
-                require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
+                header("Location: ?ctlr=home&action=featured");
+                // require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             } else {
                 $delay = true;
                 $logErr[] = "Email or password incorrect.";
@@ -125,7 +126,8 @@ class UserController extends DefaultController {
                 $vm = PostVM::getLastNine();
                 $top_posts = $vm->ObjectArray;
                 Page::$title = 'Featured Posts';
-                require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
+                header("Location: ?ctlr=home&action=featured");
+                // require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             }else {
                 $delay = true;
                 $regErr[]= "A user with that email already exists.";

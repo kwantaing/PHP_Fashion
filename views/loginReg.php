@@ -84,7 +84,7 @@
 														<?php 
 															if(isset($regErr)){
 															foreach($regErr as $msg){
-																echo "-" . $msg . "<br>";
+																echo "- " . $msg . "<br>";
 															} 
 														}?>
 													</div>													

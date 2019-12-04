@@ -128,6 +128,7 @@ class UserController extends DefaultController {
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             }else {
                 $delay = true;
+                $regErr[]= "A user with that email already exists.";
                 Page::$title = 'Login & Registration';
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
             }

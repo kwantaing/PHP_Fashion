@@ -42,7 +42,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
-								<h1 data-title-border>Check out this Post!</h1>
+								<h1 data-title-border>Check out this post!</h1>
 							</div>
 							<div class="col-md-4 order-1 order-md-2 align-self-center">
 								<ul class="breadcrumb d-block text-md-right">
@@ -78,8 +78,6 @@
 							
 										<div class="post-meta">
 											<span><i class="far fa-user"></i> By <a href="#"><?php echo $current_post->post_user ?></a> </span>
-											<span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Design</a> </span>
-											<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
 										</div>
 									<?php 
 										if(!isset($current_post->post_msg) and $current_post->post_msg == null) {

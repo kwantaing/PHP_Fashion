@@ -26,6 +26,16 @@ class LoginVM {
         $this->enteredPassword = '';
     }
 
+    public static function getUser(){
+        $vm = new self();
+        $user = $vm->userDAM->readUser($_SESSION['email']);
+        if ($user === null) {
+            $vm->userType = self::INVALID_LOGIN;
+        }else{
+            $vm->user = $user;
+        }
+        return $user;
+    }
     public static function getInstance() {
         $vm = new self();
         $vm->enteredUserEmail = hPOST('email');

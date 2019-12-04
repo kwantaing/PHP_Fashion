@@ -64,6 +64,7 @@
 						</div>	
 						<input type="hidden" name="ctlr" value="post">
 						<input type="hidden" name="action" value="newPost">
+						<?php echo csrf_token_tag() ?>
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label class="required font-weight-bold text-dark">Name</label>
@@ -72,7 +73,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label class="font-weight-bold text-dark">Title <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
+								<label class="font-weight-bold text-dark">Title <span class="font-weight-light text-dark">&nbsp<span></label>
 								<input class="form-control" type="text" name="post_title">
 							</div>
 						</div>
@@ -98,7 +99,7 @@
 						</div> -->
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (img, png, jpg files accepted)<span></label>
+								<label class="font-weight-bold text-dark">Attachment <span class="font-weight-light text-dark">&nbsp (png, jpg, jpeg, gif files accepted)<span></label>
 								<input class="d-block" type="file" name="img_attachment">
 							</div>
 						</div>

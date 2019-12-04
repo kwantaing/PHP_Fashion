@@ -119,7 +119,7 @@
 													<div class="form-row">
 														<div class="form-group col-lg-9">
 															<div class="custom-control custom-checkbox">
-																<input type="checkbox" class="custom-control-input" id="terms">
+																<input type="checkbox" class="custom-control-input" id="terms" required>
 																<label class="custom-control-label text-2" for="terms">I have read and agree to the <a href="#">terms of service</a></label>
 															</div>
 														</div>

@@ -21,6 +21,12 @@ class PostController extends DefaultController {
             $postErr[] = "Potential SQL injection attack";
             $valid = false;
         }
+        //CSRF Token Check
+        $CSRFStatus = csrf_token_is_valid();
+        if($CSRFStatus !== true){
+          $postErr[] = "CSRF Token not valid";
+          $valid = false;
+        }
         if($valid === true) {
             $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
             $vm = PostVM::newPostInstance();
@@ -34,13 +40,16 @@ class PostController extends DefaultController {
                     if(!isset($_SESSION)) {
                         session_start();
                     }
-                    require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
+                    Page::$title = $current_post->post_title;
+                    before_every_protected_page();
+                    require(APP_NON_WEB_BASE_DIR . 'views/postDetail.php');
                 }
             }else {
                 Page::$title = 'New Post';
                 if(!isset($_SESSION)) {
                     session_start();
                 }
+                before_every_protected_page();
                 require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
             }
 
@@ -49,6 +58,7 @@ class PostController extends DefaultController {
             if(!isset($_SESSION)) {
                 session_start();
             }
+            before_every_protected_page();
             require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
 
         }
@@ -61,7 +71,7 @@ class PostController extends DefaultController {
         before_every_protected_page();
         //check session logged in
         //if session in
-
+        Page::$title = 'New Post';
         require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');
     }
 
@@ -73,11 +83,12 @@ class PostController extends DefaultController {
         $current_post = $post_vm->post_obj;
         unset($_SESSION['post_id']);
         
-        before_every_protected_page();
         if(!isset($_SESSION)) {
             session_start();
         }
-        require(APP_NON_WEB_BASE_DIR . 'views/PostDetail.php');
+        before_every_protected_page();
+        Page::$title = $current_post->post_title;
+        require(APP_NON_WEB_BASE_DIR . 'views/postDetail.php');
     }
 
     // public function featured(){

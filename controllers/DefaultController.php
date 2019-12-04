@@ -31,7 +31,7 @@ class DefaultController {
     public function index($vm = null) {
 
         // Set page tab title
-        Page::$title = 'CIS 4270 Fashion';
+        Page::$title = 'Clothing in Style - Four to Seven Tee';
 
         // Create view model
       /*  if ($vm === null) {

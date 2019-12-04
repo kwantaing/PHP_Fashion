@@ -19,8 +19,10 @@ class UserController extends DefaultController {
         parent::__construct();
     }
     public function logRegGET() {
-        session_start();
-        Page::$title = 'Fashion Advices - Login & Registration';
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        Page::$title = 'Login & Registration';
         require(APP_NON_WEB_BASE_DIR .'views/loginReg.php');
     }
     // public function loginPOST() {
@@ -52,12 +54,15 @@ class UserController extends DefaultController {
 
     // }
     public function loginPOST() {
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
         $delay = false;
         after_successful_logout();
         if(!isset($_POST['email']) && !isset($_POST['password'])){
             $logErr[] = "Please enter in all input fields.";
             $delay = true;
+            Page::$title = 'Login & Registration';
             require(APP_NON_WEB_BASE_DIR .'views/loginReg.php');
         }else{
             $vm = LoginVM::getInstance();
@@ -65,10 +70,12 @@ class UserController extends DefaultController {
                 after_successful_login();
                 $vm = PostVM::getLastNine();
                 $top_posts = $vm->ObjectArray;
+                Page::$title = 'Featured Posts';
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             } else {
                 $delay = true;
                 $logErr[] = "password or email incorrect";
+                Page::$title = 'Login & Registration';
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
             }
             //validations
@@ -79,9 +86,12 @@ class UserController extends DefaultController {
     }
     
     public function logout() {
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
         session_destroy();
         after_successful_logout();
+        Page::$title = 'Featured Posts';
         require(APP_NON_WEB_BASE_DIR . 'views/home.php');
     }
     // public function registerPOST() {
@@ -135,11 +145,12 @@ class UserController extends DefaultController {
         }
         if($valid == true){
             $vm = RegisterVM::regNewUserInstance();
-            Page::$title = 'Fashion Advices - Login & Registration';
+            Page::$title = 'Login & Registration';
             if($vm->userType == RegisterVM::VALID_REG){
                 after_successful_login();
                 $vm = PostVM::getLastNine();
                 $top_posts = $vm->ObjectArray;
+                Page::$title = 'Featured Posts';
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             }else {
                 $delay = true;
@@ -148,6 +159,7 @@ class UserController extends DefaultController {
 
         }else{
             $delay = true;
+            Page::$title = 'Login & Registration';
             require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
 
         }

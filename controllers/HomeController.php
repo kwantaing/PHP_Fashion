@@ -15,7 +15,17 @@ class HomeController extends DefaultController {
     }
 
     public function aboutUs() {
+        Page::$title = 'About Us';
         require(APP_NON_WEB_BASE_DIR . 'views/aboutUs.php');
+    }
+    public function aboutMe() {
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+    $current_user = LoginVM::getUser();
+    before_every_protected_page();
+    Page::$title = 'Account Profile';
+    require(APP_NON_WEB_BASE_DIR . 'views/aboutMe.php');
     }
     public function featured(){
         if(!isset($_SESSION)) {
@@ -25,7 +35,7 @@ class HomeController extends DefaultController {
         //get 9 posts now
         $vm = PostVM::getLastNine();
         $top_posts = $vm->ObjectArray;
-        
+        Page::$title = 'Featured Posts';
         require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
     }
     

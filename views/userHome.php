@@ -11,16 +11,16 @@
 							<div class="col-md-12 align-self-center p-static order-2 text-center">
 
 								<h1 class="text-light font-weight-bold text-8">Featured Posts</h1>
-								<span class="sub-title text-light">Welcome <?php echo $_SESSION['userName'] ?> !</span>
+								<span class="sub-title text-light">Welcome <a href="?ctlr=home&amp;action=aboutMe"><?php echo $_SESSION['userName'] ?></a>!</span>
 
-								<span class="sub-title text-light">Check out our Latest Posts!</span>
+								<span class="sub-title text-light">Let's find some fashion inspos today</span>
 							</div>
 
 							<div class="col-md-12 align-self-center order-1">
 
 								<ul class="breadcrumb d-block text-center">
 									<li><a href="#">Home</a></li>
-									<li class="active">User Welcome </li>
+									<li class="active">Featured Posts</li>
 								</ul>
 							</div>
 						</div>
@@ -62,8 +62,6 @@
 															echo '</p>
 															<div class="post-meta">
 																<span><i class="far fa-user"></i> By <a href="#">' . $post->post_user . '</a> </span>
-																<span><i class="far fa-folder"></i> <a href="#">News</a>, <a href="#">Design</a> </span>
-																<span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
 																<span class="d-block mt-2"><a href="?ctlr=post&amp;action=readPost&amp;id=' . $post->post_id . '" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
 															</div>
 														</div>

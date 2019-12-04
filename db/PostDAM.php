@@ -52,6 +52,13 @@ class PostDAM extends DAM {
         $statement->bindValue(':post_msg', $post->post_msg);
     }
 
+    public function wipeInvalidupload() {
+        $query = 'DELETE FROM Posts WHERE post_id = (SELECT LAST_INSERT_ID())';
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     public function getlastNine(){
         $query = "SELECT * FROM Posts ORDER BY post_id DESC LIMIT 9";
         $statement = $this->db->prepare($query);

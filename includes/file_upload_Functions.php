@@ -4,7 +4,7 @@
 // Configuration
 // Use MAX_FILE_SIZE in your form but don't trust it.
 // Check it again in your application
-$max_file_size = 10000000; // 5 MB expressed in bytes
+$max_file_size = 10000000; // ~10 MB expressed in bytes
 // Where to store uploaded files?
 // Choose a directory outside of the public path, unless the file
 // should be publicly visible/accessible.
@@ -72,7 +72,7 @@ function file_contains_php($file) {
 // If file passes, it is moved to a permanent upload directory
 // and its execute permissions are removed.
 function upload_file($field_name) {
-	global $upload_path, $max_file_size, $allowed_mime_types, $allowed_extensions, $check_is_image, $check_for_php;
+	global $uploadErr,$upload_path, $max_file_size, $allowed_mime_types, $allowed_extensions, $check_is_image, $check_for_php;
 	if(isset($_FILES[$field_name])) {
 		// Sanitize the provided file name.
 		$file_name = sanitize_file_name($_FILES[$field_name]['name']); //Name is given by php
@@ -92,31 +92,31 @@ function upload_file($field_name) {
 		$file_path = $upload_path . '/' . $file_name;
 		if($error > 0) {
 			// Display errors caught by PHP
-			echo "Error: " . file_upload_error($error);
+			$uploadErr[] = "Error: " . file_upload_error($error);
 		} elseif(!is_uploaded_file($tmp_file)) {
-			echo "Error: Does not reference a recently uploaded file.<br />";
+			$uploadErr[] = "Error: Does not reference a recently uploaded file.<br />";
 		} elseif($file_size > $max_file_size) {
 			// PHP already first checks php.ini upload_max_filesize, and
 			// then form MAX_FILE_SIZE if sent.
 			// But MAX_FILE_SIZE can be spoofed; check it again yourself.
-			echo "Error: File size is too big.<br />";
+			$uploadErr[] = "Error: File size is too big.<br />";
 		} elseif(!in_array($file_type, $allowed_mime_types)) {
-			echo "Error: Not an allowed mime type.<br />";
+			$uploadErr[] = "Error: Not an allowed mime type.<br />";
 		} elseif(!in_array($file_extension, $allowed_extensions)) {
 			// Checking file extension prevents files like 'evil.jpg.php'
-			echo "Error: Not an allowed file extension.<br />";
+			$uploadErr[] = "Error: Not an allowed file extension.<br />";
 		} elseif($check_is_image && (getimagesize($tmp_file) === false)) {
 			// getimagesize() returns image size details, but more importantly,
 			// returns false if the file is not actually an image file.
 			// You obviously would only run this check if expecting an image.
-			echo "Error: Not a valid image file.<br />";
+			$uploadErr[] = "Error: Not a valid image file.<br />";
 		} elseif($check_for_php && file_contains_php($tmp_file)) {
 			// A valid image can still contain embedded PHP.
-			echo "Error: File contains PHP code.<br />";
+			$uploadErr[] = "Error: File contains PHP code.<br />";
 		} elseif(file_exists($file_path)) {
 			// if destination file exists it will be over-written
 			// by move_uploaded_file()
-			echo "Error: A file with that name already exists in target location.<br />";
+			// echo "Error: A file with that name already exists in target location.<br />";
 			// Could rename or force user to rename file.
 			// Even better to store in uniquely-named subdirectories to
 			// prevent conflicts.
@@ -125,29 +125,30 @@ function upload_file($field_name) {
 			// Because no other profile_photo has that ID, the path is unique.
 		} else {
 			// Success Messages here!
-			echo "File was uploaded without errors.<br />";
-			echo "File name is '{$file_name}'.<br />";
-			echo "File's unique name is '{$new_name}'.<br />";
-			echo "File references an uploaded file.<br />";
-			// Two ways to get the size. Should always be the same.
-			echo "Uploaded file size was {$file_size} bytes.<br />";
-			// filesize() is most useful when not working with uploaded files.
-			$tmp_filesize = filesize($tmp_file); // always in bytes
-			echo "Temp file size is {$tmp_filesize} bytes.<br />";
-			echo "Temp file location: {$tmp_file}<br />";
+			// echo "File was uploaded without errors.<br />";
+			// echo "File name is '{$file_name}'.<br />";
+			// echo "File's unique name is '{$new_name}'.<br />";
+			// echo "File references an uploaded file.<br />";
+			// // Two ways to get the size. Should always be the same.
+			// echo "Uploaded file size was {$file_size} bytes.<br />";
+			// // filesize() is most useful when not working with uploaded files.
+			// $tmp_filesize = filesize($tmp_file); // always in bytes
+			// echo "Temp file size is {$tmp_filesize} bytes.<br />";
+			// echo "Temp file location: {$tmp_file}<br />";
 			// move_uploaded_file has is_uploaded_file() built-in
 			if(move_uploaded_file($tmp_file, $file_path)) {
-				echo "File moved to: {$file_path}<br />";
+				// echo "File moved to: {$file_path}<br />";
 				// remove execute file permissions from the file
 				if(chmod($file_path, 0644)) {
-					echo "Execute permissions removed from file.<br />";
+					// echo "Execute permissions removed from file.<br />";
 					$file_permissions = file_permissions($file_path);
-					echo "File permissions are now '{$file_permissions}'.<br />";
+					// echo "File permissions are now '{$file_permissions}'.<br />";
 				} else {
-					echo "Error: Execute permissions could not be removed.<br />";
+					// echo "Error: Execute permissions could not be removed.<br />";
 				}
 			}
 		}
 	}
+	return $uploadErr;
 }
 ?>

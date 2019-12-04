@@ -54,6 +54,11 @@ class PostVM {
         $vm->post_obj = $vm->postDAM->readPost($post_id);
         return $vm;
     }
+    public static function wipelastUpload() {
+        $vm = new self();
+        $vm->postDAM->wipeInvalidupload();
+        return $vm;
+    }
 
     public static function getLastNine() {
         $vm = new self();

@@ -116,7 +116,7 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-12 mb-5">
-								<input type="submit"  name=="submit" value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
+								<input type="submit"  name="submit" value="Send Message" class="btn btn-primary btn-modern pull-right" data-loading-text="Loading...">
 							</div>
 						</div>
 					</form>

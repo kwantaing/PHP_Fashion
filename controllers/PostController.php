@@ -31,7 +31,18 @@ class PostController extends DefaultController {
             $_SESSION['post_img'] = sanitize_file_name($_FILES["img_attachment"]["name"]);
             $vm = PostVM::newPostInstance();
             if($vm->postType == PostVM::VALID_POST) {
-                upload_file('img_attachment');
+                $postErr = upload_file('img_attachment');
+                if(isset($postErr[0])){
+                    Page::$title = 'New Post';
+                    PostVM::wipelastUpload();
+                    if(!isset($_SESSION)) {
+                        session_start();
+                    }
+                    before_every_protected_page();
+                    require(APP_NON_WEB_BASE_DIR . 'views/newPost.php');           
+                
+
+                }
                 Page::$title = 'Post Details';
                 if(PostVM::getLastCreated()===false) {
                     require('views/newPost.php');

@@ -74,7 +74,7 @@ class UserController extends DefaultController {
                 require(APP_NON_WEB_BASE_DIR . 'views/userHome.php');
             } else {
                 $delay = true;
-                $logErr[] = "password or email incorrect";
+                $logErr[] = "Email or password incorrect.";
                 Page::$title = 'Login & Registration';
                 require(APP_NON_WEB_BASE_DIR . 'views/loginReg.php');
             }
